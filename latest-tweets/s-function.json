@@ -1,0 +1,39 @@
+{
+  "name": "latest-tweets",
+  "customName": false,
+  "customRole": false,
+  "handler": "latest-tweets/handler.handler",
+  "timeout": 6,
+  "memorySize": 1024,
+  "custom": {
+    "excludePatterns": [".idea/", "src/", "README.md", ".git", ".gitignore"],
+    "envVars": ["NODE_ENV=development"]
+  },
+  "endpoints": [
+    {
+      "path": "latest-tweets",
+      "method": "GET",
+      "type": "AWS",
+      "authorizationType": "none",
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": {
+        "application/json": ""
+      },
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {},
+          "responseTemplates": {
+            "application/json": ""
+          }
+        }
+      }
+    }
+  ],
+  "events": []
+}
