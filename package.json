@@ -1,0 +1,29 @@
+{
+  "name": "twitter-integration",
+  "version": "0.0.1",
+  "description": "Serverless module dependencies",
+  "author": "me",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "jshint": "^2.9.1",
+    "jshint-loader": "^0.8.3",
+    "oauth": "^0.9.14",
+    "rx": "^4.0.8",
+    "serverless-helpers-js": "^0.1.0",
+    "tap-prettify": "0.0.2",
+    "tape": "^4.4.0",
+    "webpack": "^1.12.14"
+  },
+  "dependencies": {
+    "serverless-helpers-js": "~0.1.0"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/tap-prettify src/test/**/*.js"
+  }
+}
