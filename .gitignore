@@ -1,5 +1,5 @@
 lib/bundle.js
-src/config
+src/config/env
 
 
 # Created by https://www.gitignore.io/api/webstorm
