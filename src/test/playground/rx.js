@@ -66,3 +66,6 @@ test('Rx Test - Error catch', function(assert) {
     assert.ok(errorVariable, '= true proves error worked');
     assert.end();
 });
+
+
+
