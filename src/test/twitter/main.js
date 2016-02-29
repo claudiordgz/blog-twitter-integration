@@ -10,4 +10,3 @@ var disabledWebTestTwitter = function () {
     twitter.getLatestTweets();
 };
 
-disabledWebTestTwitter();

@@ -22,6 +22,7 @@
     "jshint-loader": "^0.8.3",
     "memjs": "^0.9.0",
     "oauth": "^0.9.14",
+    "redis": "^2.4.2",
     "rx": "^4.0.8",
     "serverless-helpers-js": "^0.1.0",
     "tap-prettify": "0.0.2",
