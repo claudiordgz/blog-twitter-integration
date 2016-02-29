@@ -5,6 +5,12 @@ var Redis = function(cfg) {
     var configuration = cfg,
         redisClient,
 
+        logError = function(err) {
+            if (err) {
+                throw err;
+            }
+        },
+
         init = function() {
             redisClient = redis.createClient(
                 configuration.PORT,
@@ -13,14 +19,7 @@ var Redis = function(cfg) {
                     no_ready_check: true
                 }
             );
-            redisClient.auth(configuration.PASSWORD, function (err) {
-                if (err) {
-                    throw err;
-                }
-            });
-            redisClient.on('connect', function() {
-                console.log('Connected to Redis');
-            });
+            redisClient.auth(configuration.PASSWORD, logError);
         },
 
         setKeyValue = function (key, value) {
