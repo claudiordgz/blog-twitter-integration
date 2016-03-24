@@ -53,16 +53,15 @@ test('Rx Test - Error catch', function(assert) {
   'use strict';
   let errorletiable = false,
     subscription = getJSON(['{"1": 1, "2": 2}', '{"1: 1}']).catch(
-Rx.Observable.return({
-  error: 'There was an error parsing JSON',
-  errorletiable: (errorletiable = true)
-})
-);
-
-subscription.subscribe(
-  (json) =>  console.log(json),
-  (e) =>  e.message
-);
-assert.ok(errorletiable, '= true proves error worked');
-assert.end();
+    Rx.Observable.return({
+      error: 'There was an error parsing JSON',
+      errorletiable: (errorletiable = true)
+    })
+  );
+  subscription.subscribe(
+        (json) =>  console.log(json),
+        (e) =>  e.message
+  );
+  assert.ok(errorVariable, '= true proves error worked');
+  assert.end();
 });
