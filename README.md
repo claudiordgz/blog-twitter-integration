@@ -45,4 +45,4 @@ I use Webpack locally so after doing `npm install` do:
 ### Running
 
 To run use either deploy using `slss dash deploy` or run locally using 
-`slss function run twitter-integration/latert-tweets`.
+`slss function run twitter-integration/latest-tweets`.

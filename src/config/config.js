@@ -1,7 +1,3 @@
-function load(environmentName) {
-    return require('./env/' + environmentName);
+export function loadConfiguration(environmentName) {
+  return require('./env/' + environmentName);
 }
-
-module.exports = {
-    load: load
-};

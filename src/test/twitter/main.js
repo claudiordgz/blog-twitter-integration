@@ -1,12 +1,12 @@
-var cfg = require('../../config/config');
-var t = require('../../twitter/main');
-var redis = require('../../redis/main');
+let cfg = require('../../config/config');
+let t = require('../../twitter/main');
+let redis = require('../../redis/main');
 
-var disabledWebTestTwitter = function () {
-    "use strict";
-    var config = cfg.load('development');
-    var twitter = new t.Twitter(config.twitter),
-        redisAdmin = new redis.Redis(config.redis);
-    twitter.getLatestTweets();
+let disabledWebTestTwitter = function () {
+  'use strict';
+  let config = cfg.load('development');
+  let twitter = new t.Twitter(config.twitter),
+    redisAdmin = new redis.Redis(config.redis);
+  twitter.getLatestTweets();
 };
 
