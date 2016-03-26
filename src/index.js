@@ -2,6 +2,7 @@
 let Rx = require('rx');
 import {loadConfiguration} from './config/config';
 import Resources from './resources.js';
+import {retrieveBearerTokenObservable, userTimelineObservable} from './twitter.js';
 import Redis from './redis.js';
 import {InvalidBearerToken, InvalidToken} from './errors.js';
 import {mergeDicts, parseJSON, skeletonConfig, getTimeInSeconds, isEmpty} from './util.js';
@@ -59,7 +60,7 @@ function refreshTimeline(timeline, cache) {
   return cache;
 }
 
-function returnCachedOrNewTimeline(cachedData, refreshTime, userTimelineObservable) {
+function returnCachedOrNewTimeline(cachedData, refreshTime) {
   cachedData.refreshTime = cachedData.refreshTime === 999 ? refreshTime : cachedData.refreshTime;
   let cachedData$ = Rx.Observable.just(cachedData);
   let userTimeline$;
@@ -75,12 +76,11 @@ function getUserTimelineFromCacheOrTwitter(resource$) {
   return resource$
     .switchMap((resources) => {
       let redis$ = redisGetObservable(resources.redisClient.get, resources.redisClient, resources.redisKey, resources.userName);
-      let bearerToken$ = resources.twitterClient.bearerToken$;
-      let userTimelineObservable = resources.twitterClient.userTimelineObservable;
+      let bearerToken$ = retrieveBearerTokenObservable(resources.twitterConfiguration);
       let refreshTime = resources.refreshTime;
       return redis$
         .catch((error) => handleRedisErrorObservable(bearerToken$, Rx.Observable.just(JSON.parse(error.message)), refreshTime))
-        .switchMap(cachedData => returnCachedOrNewTimeline(cachedData, refreshTime, userTimelineObservable));
+        .switchMap(cachedData => returnCachedOrNewTimeline(cachedData, refreshTime));
     });
 }
 
@@ -146,3 +146,4 @@ main('development');
 module.exports = {
   main: main
 };
+

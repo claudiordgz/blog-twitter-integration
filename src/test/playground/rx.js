@@ -1,3 +1,4 @@
+'use strict';
 let Rx = require('rx'),
   test = require('tape');
 
@@ -51,11 +52,11 @@ function getJSON(arr) {
 
 test('Rx Test - Error catch', function(assert) {
   'use strict';
-  let errorletiable = false,
+  let errorVariable = false,
     subscription = getJSON(['{"1": 1, "2": 2}', '{"1: 1}']).catch(
     Rx.Observable.return({
       error: 'There was an error parsing JSON',
-      errorletiable: (errorletiable = true)
+      errorVariable: (errorVariable = true)
     })
   );
   subscription.subscribe(

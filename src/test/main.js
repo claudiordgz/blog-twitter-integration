@@ -1,5 +1,6 @@
+'use strict';
 let test = require('tape');
-let module = require('../main');
+let index = require('../index');
 
 function IsJsonString(str) {
   try {
@@ -11,7 +12,7 @@ function IsJsonString(str) {
 }
 
 test('latest-tweets returns valid JSON', function (assert) {
-  let responseJSON = JSON.stringify(module.main());
+  let responseJSON = JSON.stringify(index.main());
   assert.true(IsJsonString(responseJSON));
   assert.end();
 });

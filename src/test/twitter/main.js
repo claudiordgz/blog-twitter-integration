@@ -1,6 +1,7 @@
+'use strict';
 let cfg = require('../../config/config');
-let t = require('../../twitter/main');
-let redis = require('../../redis/main');
+let t = require('../../twitter.js');
+let redis = require('../../redis.js');
 
 let disabledWebTestTwitter = function () {
   'use strict';

@@ -1,7 +1,9 @@
-var webpack = require('webpack'),
-  path = require('path'),
-  fs = require('fs'),
-  nodeModules = {};
+'use strict';
+const webpack = require('webpack');
+const path = require('path');
+const fs = require('fs');
+let nodeModules = {};
+
 fs.readdirSync('node_modules')
   .filter(function(x) {
     return ['.bin'].indexOf(x) === -1;
@@ -27,7 +29,7 @@ module.exports = {
   output: {
     path: __dirname + '/lib',
     filename: 'bundle.js',
-    library: "twitterIntegration",
+    library: 'twitterIntegration',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
@@ -37,17 +39,13 @@ module.exports = {
       {
         test: /\.js$/,
         include: [
-          path.resolve(__dirname, "src")
+          path.resolve(__dirname, 'src')
         ],
-        loader: 'babel',
-        query: {
-          plugins: ['transform-runtime'],
-          presets: ['es2015', 'stage-0']
-        }
+        loader: 'babel'
       },
       {
         test: /\.json?$/,
-        loader: "json-loader"
+        loader: 'json-loader'
       }
     ],
     preLoaders: [
@@ -59,14 +57,18 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ["", ".js", '.es6.js']
+    extensions: ['', '.js']
   },
   resolveLoader: {
     root: path.join(__dirname, 'node_modules')
   },
   plugins: [
     new webpack.BannerPlugin('require("source-map-support").install();',
-      { raw: true, entryOnly: false })
+      {
+        raw: true,
+        entryOnly: false
+      }
+    )
   ],
   eslint: {
     configFile: '.eslintrc'

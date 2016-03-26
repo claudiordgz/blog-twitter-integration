@@ -1,4 +1,3 @@
-import Twitter from './twitter.js';
 import Redis from './redis.js';
 import Logger from './logger.js';
 let logger = Logger.instance;
@@ -6,7 +5,7 @@ let logger = Logger.instance;
 export default class Resources {
   constructor(twitterConfiguration, redisConfiguration, userName) {
     this.configuration = {
-      twitterClient: new Twitter(twitterConfiguration),
+      twitterConfiguration: twitterConfiguration,
       redisClient: new Redis(redisConfiguration).client,
       redisKey: redisConfiguration.KEY + userName,
       refreshTime: twitterConfiguration.REFRESH_TIME_MINUTES,
